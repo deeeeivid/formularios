@@ -11,6 +11,15 @@ import lombok.NoArgsConstructor;
 public class Usuario {
 
     //Siempre con los string se valida con NotEmpty
+    //No se valida porque no va a estar en el formulario
+    private String identificador;
+
+    @NotEmpty
+    private String nombre;
+
+    @NotEmpty
+    private String apellido;
+
     @NotEmpty
     private String username;
 
