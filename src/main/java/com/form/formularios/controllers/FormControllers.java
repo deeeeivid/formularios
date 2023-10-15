@@ -1,6 +1,7 @@
 package com.form.formularios.controllers;
 
 import com.form.formularios.models.domain.Usuario;
+import com.form.formularios.validation.UsuarioValidador;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes("usuario")
 public class FormControllers {
 
+    private UsuarioValidador usuarioValidador;
     @GetMapping("/form")
     public String form(Model model) {
         Usuario usuario = new Usuario();
@@ -29,7 +31,7 @@ public class FormControllers {
     //BindingResult -> Siempre tiene que ir despues del objeto a validar, segundo argumento
     @PostMapping("/form")
     public String procesar(@Valid Usuario usuario, BindingResult bindingResult, Model model, SessionStatus status) {
-
+        usuarioValidador.validate(usuario, bindingResult);
         model.addAttribute("titulo", "Resultado formulario");
 
         if (bindingResult.hasErrors()) {
@@ -41,4 +43,5 @@ public class FormControllers {
         status.setComplete();
         return "resultado";
     }
+
 }
