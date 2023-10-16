@@ -46,4 +46,7 @@ public class Usuario {
 //    @Future
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento;
+
+    @NotEmpty
+    private String pais;
 }

@@ -67,6 +67,15 @@
         <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></div>
     </div>
     <div>
+        <label for="pais">Pais</label>
+        <div>
+            <select id="pais" th:field="*{pais}" ></select>
+            <option value="">--seleccionar--</option>
+            <option th:each="pais: ${paises}" th:text="${pais}" th:value="${pais}"></option>
+        </div>
+        <div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+    </div>
+    <div>
         <div>
             <input type="submit" value="enviar">
         </div>
