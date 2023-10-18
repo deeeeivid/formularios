@@ -4,9 +4,9 @@ import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -47,6 +47,11 @@ public class Usuario {
 //    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaNacimiento;
 
+    //Indicamos que se validen los objetos relacionados
+//    @Valid para un campo
+    @NotNull
+    private Pais pais;
+
     @NotEmpty
-    private String pais;
+    private List<Role> roles;
 }

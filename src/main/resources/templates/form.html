@@ -18,6 +18,16 @@
         <div th:if="${#fields.hasErrors('identificador')}" th:errors="*{identificador}"></div>
     </div>
     <div>
+        <label>Roles</label>
+        <div th:each="role: ${listaRoles}">
+            <label>
+                <input type="checkbox" th:field="*{roles}" th:value="${role.id}">
+            </label>
+            <label th:for="${#ids.prev('roles')}" th:text="${role.nombre}"></label>
+        </div>
+        <div th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></div>
+    </div>
+    <div>
         <label for="nombre">Nombre</label>
         <div>
             <input type="text" id="nombre" th:field="*{nombre}">
@@ -69,11 +79,15 @@
     <div>
         <label for="pais">Pais</label>
         <div>
+<!--            <select id="pais" th:field="*{pais}" ></select>-->
+<!--            <select id="pais" th:field="*{pais.id}" ></select>-->
             <select id="pais" th:field="*{pais}" ></select>
             <option value="">--seleccionar--</option>
-            <option th:each="pais: ${paises}" th:text="${pais}" th:value="${pais}"></option>
+<!--            <option th:each="pais: ${paisesMap.entrySet()}" th:text="${pais.value}" th:value="${pais.key}"></option>-->
+            <option th:each="pais: ${listaPaises}" th:text="${pais.nombre}" th:value="${pais.id}"></option>
         </div>
         <div th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></div>
+<!--        <div th:if="${#fields.hasErrors('pais.id')}" th:errors="*{pais.id}"></div>-->
     </div>
     <div>
         <div>
